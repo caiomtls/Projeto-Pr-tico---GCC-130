@@ -1,2 +1,2 @@
-# Projeto-Pr-tico---GCC-130
+# Projeto_Pratico_GCC-130
 Implementação do compilador da linguagem Grito.
