@@ -1,0 +1,16 @@
+DECLARACOES
+int var1 = 0!
+int x!
+palavra p = ""!
+
+ALGORITMO
+LER(x)!
+
+@enquanto x > 0 e x <= 100 #
+    ?se x % 2 == 0 #
+        IMPRIMIR(x)!
+    #senao #
+        IMPRIMIR("")!
+    #
+    x = x - 1!
+#

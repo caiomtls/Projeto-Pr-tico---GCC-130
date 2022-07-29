@@ -1,0 +1,6 @@
+DECLARACOES£
+
+Int a = 0;
+?se a != 2#
+    LER(x)!
+#
