@@ -2,6 +2,7 @@ grammar Grito;
 
 DECLARACOES: 'DECLARACOES';
 ALGORITMO: 'ALGORITMO';
+RETORNA: 'RETORNA';
 
 ATRIBUIR: '=';
 OP_ARIT: '+' | '-' | '*' | '/' | '%';
@@ -11,14 +12,14 @@ OP_LOG: 'e' | 'ou' | 'nao' | 'xou';
 ABRE: '(';
 FECHA:  ')';
 
-TIPO: 'int' | 'real' | 'palavra';
-NUM: DIGITO+ ('.' DIGITO+)?;
+TIPO: 'int' | 'real' | 'palavra' | 'funcao';
+NUM: [-]? DIGITO+ ('.' DIGITO+)?;
 
-PALAVRA: '"'+ (LETRA+)* '"';
+CADEIA: '"'+ (LETRA+)* '"';
 ENTRADA: 'LER';
 SAIDA: 'IMPRIMIR';
 
-CODICIONAL: 'se' | 'senao';
+CONDICIONAL: 'se' | 'senao';
 COND: '?';
 REPETICAO: 'enquanto' | 'para';
 REP: '@';

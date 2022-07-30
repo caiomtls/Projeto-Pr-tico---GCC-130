@@ -1,7 +1,11 @@
 DECLARACOES
-int var1 = 0!
+int v = -3!
 int x!
 palavra p = ""!
+
+funcao foo(int num)#
+    RETORNA num + 1!
+#
 
 ALGORITMO
 LER(x)!
@@ -9,7 +13,7 @@ LER(x)!
 @enquanto x > 0 e x <= 100 #
     ?se x % 2 == 0 #
         IMPRIMIR(x)!
-    #senao #
+    #?senao #
         IMPRIMIR("")!
     #
     x = x - 1!
