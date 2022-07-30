@@ -1,0 +1,67 @@
+/usr/lib/jvm/jdk-17/bin/java -javaagent:/mnt/data/Downloads/IdealC/idea-IC-222.3345.118/lib/idea_rt.jar=34101:/mnt/data/Downloads/IdealC/idea-IC-222.3345.118/bin -Dfile.encoding=UTF-8 -classpath /home/caio/IdeaProjects/Compilador/out/production/Compilador:/usr/local/lib/antlr-4.10.1-complete.jar Lexer
+Token: [@-1,0:10='DECLARACOES',<1>,1:0]
+    Lexema: DECLARACOES
+    Classe: 'DECLARACOES'
+Token: [@-1,11:11='£',<22>,1:11]
+    Lexema: £
+    Classe: ErrorChar
+Token: [@-1,14:16='Int',<20>,3:0]
+    Lexema: Int
+    Classe: ID
+Token: [@-1,18:18='a',<20>,3:4]
+    Lexema: a
+    Classe: ID
+Token: [@-1,20:20='=',<3>,3:6]
+    Lexema: =
+    Classe: '='
+Token: [@-1,22:22='0',<10>,3:8]
+    Lexema: 0
+    Classe: NUM
+Token: [@-1,23:23=';',<22>,3:9]
+    Lexema: ;
+    Classe: ErrorChar
+Token: [@-1,25:25='?',<15>,4:0]
+    Lexema: ?
+    Classe: '?'
+Token: [@-1,26:27='se',<14>,4:1]
+    Lexema: se
+    Classe: CODICIONAL
+Token: [@-1,29:29='a',<20>,4:4]
+    Lexema: a
+    Classe: ID
+Token: [@-1,31:31='!',<18>,4:6]
+    Lexema: !
+    Classe: '!'
+Token: [@-1,32:32='=',<3>,4:7]
+    Lexema: =
+    Classe: '='
+Token: [@-1,34:34='2',<10>,4:9]
+    Lexema: 2
+    Classe: NUM
+Token: [@-1,35:35='#',<19>,4:10]
+    Lexema: #
+    Classe: '#'
+Token: [@-1,41:43='LER',<12>,5:4]
+    Lexema: LER
+    Classe: 'LER'
+Token: [@-1,44:44='(',<7>,5:7]
+    Lexema: (
+    Classe: '('
+Token: [@-1,45:45='x',<20>,5:8]
+    Lexema: x
+    Classe: ID
+Token: [@-1,46:46=')',<8>,5:9]
+    Lexema: )
+    Classe: ')'
+Token: [@-1,47:47='!',<18>,5:10]
+    Lexema: !
+    Classe: '!'
+Token: [@-1,49:49='#',<19>,6:0]
+    Lexema: #
+    Classe: '#'
+Token: [@-1,51:50='<EOF>',<-1>,7:0]
+    Lexema: <EOF>
+    Classe: EOF
+
+Process finished with exit code 0
+
