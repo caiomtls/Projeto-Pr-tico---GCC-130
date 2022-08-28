@@ -8,8 +8,8 @@ public class Lexer {
     public static void main(String[] args) {
         String filename = "/home/caio/IdeaProjects/Compilador/src/codigo.txt";
         try {
-            CharStream input = (CharStream) CharStreams.fromFileName(filename);
-            GritoLexer lexer = new GritoLexer((org.antlr.v4.runtime.CharStream) input);
+            CharStream input = CharStreams.fromFileName(filename);
+            GritoLexer lexer = new GritoLexer(input);
             Token token;
             while (!lexer._hitEOF) {
                 token = lexer.nextToken();

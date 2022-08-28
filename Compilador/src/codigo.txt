@@ -3,7 +3,7 @@ int v = -3!
 int x!
 palavra p = ""!
 
-funcao foo(int num)#
+funcao foo(int num, int num2)#
     RETORNA num + 1!
 #
 
@@ -18,3 +18,7 @@ LER(x)!
     #
     x = x - 1!
 #
+
+//Comentario
+
+LER(y)!
