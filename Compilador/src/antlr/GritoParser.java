@@ -136,11 +136,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitBlocoPrograma(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitBlocoPrograma(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ProgramaContext programa() throws RecognitionException {
@@ -211,11 +206,6 @@ public class GritoParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitBlocoDeclaracoes(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitBlocoDeclaracoes(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -307,11 +297,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNComandos(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNComandos(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ComandosContext comandos() throws RecognitionException {
@@ -367,10 +352,10 @@ public class GritoParser extends Parser {
 	public static class NDeclaracaoContext extends DeclaracaoContext {
 		public TerminalNode TIPO() { return getToken(GritoParser.TIPO, 0); }
 		public TerminalNode ID() { return getToken(GritoParser.ID, 0); }
-		public InicializacaoContext inicializacao() {
-			return getRuleContext(InicializacaoContext.class,0);
-		}
 		public TerminalNode FL() { return getToken(GritoParser.FL, 0); }
+		public TerminalNode ATRIBUIR() { return getToken(GritoParser.ATRIBUIR, 0); }
+		public TerminalNode NUM() { return getToken(GritoParser.NUM, 0); }
+		public TerminalNode CADEIA() { return getToken(GritoParser.CADEIA, 0); }
 		public NDeclaracaoContext(DeclaracaoContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -380,16 +365,12 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNDeclaracao(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNDeclaracao(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final DeclaracaoContext declaracao() throws RecognitionException {
 		DeclaracaoContext _localctx = new DeclaracaoContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_declaracao);
+		int _la;
 		try {
 			_localctx = new NDeclaracaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
@@ -398,9 +379,27 @@ public class GritoParser extends Parser {
 			match(TIPO);
 			setState(66);
 			match(ID);
-			setState(67);
-			inicializacao();
-			setState(68);
+			setState(69);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			if (_la==ATRIBUIR) {
+				{
+				setState(67);
+				match(ATRIBUIR);
+				setState(68);
+				_la = _input.LA(1);
+				if ( !(_la==NUM || _la==CADEIA) ) {
+				_errHandler.recoverInline(this);
+				}
+				else {
+					if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+					_errHandler.reportMatch(this);
+					consume();
+				}
+				}
+			}
+
+			setState(71);
 			match(FL);
 			}
 		}
@@ -446,11 +445,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNInicializacao(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNInicializacao(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final InicializacaoContext inicializacao() throws RecognitionException {
@@ -461,19 +455,19 @@ public class GritoParser extends Parser {
 			_localctx = new NInicializacaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(74);
+			setState(77);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ATRIBUIR) {
 				{
 				{
-				setState(70);
+				setState(73);
 				match(ATRIBUIR);
-				setState(71);
+				setState(74);
 				informacao();
 				}
 				}
-				setState(76);
+				setState(79);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -523,11 +517,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNComando(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNComando(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ComandoContext comando() throws RecognitionException {
@@ -537,31 +526,31 @@ public class GritoParser extends Parser {
 			_localctx = new NComandoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(81);
+			setState(84);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ID:
 				{
-				setState(77);
+				setState(80);
 				atribuicao();
 				}
 				break;
 			case ENTRADA:
 			case SAIDA:
 				{
-				setState(78);
+				setState(81);
 				io();
 				}
 				break;
 			case REP:
 				{
-				setState(79);
+				setState(82);
 				repeticao();
 				}
 				break;
 			case COND:
 				{
-				setState(80);
+				setState(83);
 				condicao();
 				}
 				break;
@@ -617,11 +606,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNAtribuicao(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNAtribuicao(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final AtribuicaoContext atribuicao() throws RecognitionException {
@@ -632,37 +616,37 @@ public class GritoParser extends Parser {
 			_localctx = new NAtribuicaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(83);
+			setState(86);
 			match(ID);
-			setState(84);
+			setState(87);
 			match(ATRIBUIR);
-			setState(89);
+			setState(92);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NUM) | (1L << CADEIA) | (1L << ID))) != 0)) {
 				{
-				setState(87);
+				setState(90);
 				_errHandler.sync(this);
-				switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+				switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
 				case 1:
 					{
-					setState(85);
+					setState(88);
 					computacao();
 					}
 					break;
 				case 2:
 					{
-					setState(86);
+					setState(89);
 					informacao();
 					}
 					break;
 				}
 				}
-				setState(91);
+				setState(94);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(92);
+			setState(95);
 			match(FL);
 			}
 		}
@@ -710,11 +694,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNComputacoes(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNComputacoes(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ComputacoesContext computacoes() throws RecognitionException {
@@ -725,23 +704,23 @@ public class GritoParser extends Parser {
 			_localctx = new NComputacoesContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(99);
+			setState(102);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(94);
+					setState(97);
 					computacao();
-					setState(95);
+					setState(98);
 					computacoes();
 					}
 					} 
 				}
-				setState(101);
+				setState(104);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,8,_ctx);
 			}
 			}
 		}
@@ -783,11 +762,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNComputacao(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNComputacao(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ComputacaoContext computacao() throws RecognitionException {
@@ -798,14 +772,14 @@ public class GritoParser extends Parser {
 			_localctx = new NComputacaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(102);
+			setState(105);
 			termo();
-			setState(104);
+			setState(107);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << OP_ARIT) | (1L << OP_REL) | (1L << OP_LOG))) != 0)) {
 				{
-				setState(103);
+				setState(106);
 				operador();
 				}
 			}
@@ -863,11 +837,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNFuncao(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNFuncao(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final FuncaoContext funcao() throws RecognitionException {
@@ -877,27 +846,27 @@ public class GritoParser extends Parser {
 			_localctx = new NFuncaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(106);
-			match(FUNC);
-			setState(107);
-			match(ID);
-			setState(108);
-			match(AP);
 			setState(109);
-			argumentos();
+			match(FUNC);
 			setState(110);
-			match(FP);
+			match(ID);
 			setState(111);
-			match(BLOCO);
+			match(AP);
 			setState(112);
-			comandos();
+			argumentos();
 			setState(113);
-			match(RETORNA);
+			match(FP);
 			setState(114);
-			conjunturas();
+			match(BLOCO);
 			setState(115);
-			match(FL);
+			comandos();
 			setState(116);
+			match(RETORNA);
+			setState(117);
+			conjunturas();
+			setState(118);
+			match(FL);
+			setState(119);
 			match(BLOCO);
 			}
 		}
@@ -945,11 +914,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNArgumentos(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNArgumentos(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ArgumentosContext argumentos() throws RecognitionException {
@@ -960,23 +924,23 @@ public class GritoParser extends Parser {
 			_localctx = new NArgumentosContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(123);
+			setState(126);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(118);
+					setState(121);
 					argumento();
-					setState(119);
+					setState(122);
 					argumentos();
 					}
 					} 
 				}
-				setState(125);
+				setState(128);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
 			}
 			}
 		}
@@ -1015,11 +979,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNArgumento(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNArgumento(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ArgumentoContext argumento() throws RecognitionException {
@@ -1031,19 +990,19 @@ public class GritoParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(127);
+			setState(130);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			if (_la==VIRGULA) {
 				{
-				setState(126);
+				setState(129);
 				match(VIRGULA);
 				}
 			}
 
-			setState(129);
+			setState(132);
 			match(TIPO);
-			setState(130);
+			setState(133);
 			match(ID);
 			}
 			}
@@ -1074,11 +1033,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitInformacao(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitInformacao(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final InformacaoContext informacao() throws RecognitionException {
@@ -1088,7 +1042,7 @@ public class GritoParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(132);
+			setState(135);
 			_la = _input.LA(1);
 			if ( !(_la==NUM || _la==CADEIA) ) {
 			_errHandler.recoverInline(this);
@@ -1127,11 +1081,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitOperador(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitOperador(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final OperadorContext operador() throws RecognitionException {
@@ -1141,7 +1090,7 @@ public class GritoParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(134);
+			setState(137);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << OP_ARIT) | (1L << OP_REL) | (1L << OP_LOG))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1189,11 +1138,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNTermo(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNTermo(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final TermoContext termo() throws RecognitionException {
@@ -1203,19 +1147,19 @@ public class GritoParser extends Parser {
 			_localctx = new NTermoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(138);
+			setState(141);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ID:
 				{
-				setState(136);
+				setState(139);
 				match(ID);
 				}
 				break;
 			case NUM:
 			case CADEIA:
 				{
-				setState(137);
+				setState(140);
 				informacao();
 				}
 				break;
@@ -1263,11 +1207,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNIoStatic(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNIoStatic(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	public static class NIoContext extends IoContext {
 		public TerminalNode ENTRADA() { return getToken(GritoParser.ENTRADA, 0); }
@@ -1285,52 +1224,47 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNIo(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNIo(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final IoContext io() throws RecognitionException {
 		IoContext _localctx = new IoContext(_ctx, getState());
 		enterRule(_localctx, 30, RULE_io);
 		try {
-			setState(158);
+			setState(161);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,13,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,14,_ctx) ) {
 			case 1:
 				_localctx = new NIoContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(150);
+				setState(153);
 				_errHandler.sync(this);
 				switch (_input.LA(1)) {
 				case ENTRADA:
 					{
-					setState(140);
-					match(ENTRADA);
-					setState(141);
-					match(AP);
-					setState(142);
-					match(ID);
 					setState(143);
-					match(FP);
+					match(ENTRADA);
 					setState(144);
+					match(AP);
+					setState(145);
+					match(ID);
+					setState(146);
+					match(FP);
+					setState(147);
 					match(FL);
 					}
 					break;
 				case SAIDA:
 					{
-					setState(145);
-					match(SAIDA);
-					setState(146);
-					match(AP);
-					setState(147);
-					match(ID);
 					setState(148);
-					match(FP);
+					match(SAIDA);
 					setState(149);
+					match(AP);
+					setState(150);
+					match(ID);
+					setState(151);
+					match(FP);
+					setState(152);
 					match(FL);
 					}
 					break;
@@ -1343,15 +1277,15 @@ public class GritoParser extends Parser {
 				_localctx = new NIoStaticContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(152);
-				match(SAIDA);
-				setState(153);
-				match(AP);
-				setState(154);
-				informacao();
 				setState(155);
-				match(FP);
+				match(SAIDA);
 				setState(156);
+				match(AP);
+				setState(157);
+				informacao();
+				setState(158);
+				match(FP);
+				setState(159);
 				match(FL);
 				}
 				break;
@@ -1401,11 +1335,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitBlocoRepticao(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitBlocoRepticao(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final RepeticaoContext repeticao() throws RecognitionException {
@@ -1415,17 +1344,17 @@ public class GritoParser extends Parser {
 			_localctx = new BlocoRepticaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(160);
-			match(REP);
-			setState(161);
-			match(REPETICAO);
-			setState(162);
-			conjunturas();
 			setState(163);
-			match(BLOCO);
+			match(REP);
 			setState(164);
-			comandos();
+			match(REPETICAO);
 			setState(165);
+			conjunturas();
+			setState(166);
+			match(BLOCO);
+			setState(167);
+			comandos();
+			setState(168);
 			match(BLOCO);
 			}
 		}
@@ -1473,11 +1402,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitBlocoCondicao(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitBlocoCondicao(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final CondicaoContext condicao() throws RecognitionException {
@@ -1487,17 +1411,17 @@ public class GritoParser extends Parser {
 			_localctx = new BlocoCondicaoContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(167);
-			match(COND);
-			setState(168);
-			match(CONDICIONAL);
-			setState(169);
-			conjunturas();
 			setState(170);
-			match(BLOCO);
+			match(COND);
 			setState(171);
-			comandos();
+			match(CONDICIONAL);
 			setState(172);
+			conjunturas();
+			setState(173);
+			match(BLOCO);
+			setState(174);
+			comandos();
+			setState(175);
 			match(BLOCO);
 			}
 		}
@@ -1545,11 +1469,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNConjunturas(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNConjunturas(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ConjunturasContext conjunturas() throws RecognitionException {
@@ -1560,23 +1479,23 @@ public class GritoParser extends Parser {
 			_localctx = new NConjunturasContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(179);
+			setState(182);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,14,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,15,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(174);
+					setState(177);
 					conjuntura();
-					setState(175);
+					setState(178);
 					conjunturas();
 					}
 					} 
 				}
-				setState(181);
+				setState(184);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,14,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,15,_ctx);
 			}
 			}
 		}
@@ -1618,11 +1537,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNConjuturaStatic(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNConjuturaStatic(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	public static class NConjunturaContext extends ConjunturaContext {
 		public TerminalNode ID() { return getToken(GritoParser.ID, 0); }
@@ -1638,11 +1552,6 @@ public class GritoParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof GritoListener ) ((GritoListener)listener).exitNConjuntura(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof GritoVisitor ) return ((GritoVisitor<? extends T>)visitor).visitNConjuntura(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ConjunturaContext conjuntura() throws RecognitionException {
@@ -1650,24 +1559,24 @@ public class GritoParser extends Parser {
 		enterRule(_localctx, 38, RULE_conjuntura);
 		int _la;
 		try {
-			setState(190);
+			setState(193);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
 			case 1:
 				_localctx = new NConjunturaContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(183);
+				setState(186);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << OP_ARIT) | (1L << OP_REL) | (1L << OP_LOG))) != 0)) {
 					{
-					setState(182);
+					setState(185);
 					operador();
 					}
 				}
 
-				setState(185);
+				setState(188);
 				match(ID);
 				}
 				break;
@@ -1675,17 +1584,17 @@ public class GritoParser extends Parser {
 				_localctx = new NConjuturaStaticContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(187);
+				setState(190);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << OP_ARIT) | (1L << OP_REL) | (1L << OP_LOG))) != 0)) {
 					{
-					setState(186);
+					setState(189);
 					operador();
 					}
 				}
 
-				setState(189);
+				setState(192);
 				informacao();
 				}
 				break;
@@ -1703,7 +1612,7 @@ public class GritoParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u001a\u00c1\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0004\u0001\u001a\u00c4\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
 		"\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004"+
 		"\u0002\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007"+
 		"\u0002\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b"+
@@ -1713,109 +1622,111 @@ public class GritoParser extends Parser {
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0003\u00011\b"+
 		"\u0001\u0001\u0001\u0001\u0001\u0005\u00015\b\u0001\n\u0001\f\u00018\t"+
 		"\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0005\u0002=\b\u0002\n\u0002"+
-		"\f\u0002@\t\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001"+
-		"\u0003\u0001\u0004\u0001\u0004\u0005\u0004I\b\u0004\n\u0004\f\u0004L\t"+
-		"\u0004\u0001\u0005\u0001\u0005\u0001\u0005\u0001\u0005\u0003\u0005R\b"+
-		"\u0005\u0001\u0006\u0001\u0006\u0001\u0006\u0001\u0006\u0005\u0006X\b"+
-		"\u0006\n\u0006\f\u0006[\t\u0006\u0001\u0006\u0001\u0006\u0001\u0007\u0001"+
-		"\u0007\u0001\u0007\u0005\u0007b\b\u0007\n\u0007\f\u0007e\t\u0007\u0001"+
-		"\b\u0001\b\u0003\bi\b\b\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001"+
-		"\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001\n\u0001\n\u0001"+
-		"\n\u0005\nz\b\n\n\n\f\n}\t\n\u0001\u000b\u0003\u000b\u0080\b\u000b\u0001"+
-		"\u000b\u0001\u000b\u0001\u000b\u0001\f\u0001\f\u0001\r\u0001\r\u0001\u000e"+
-		"\u0001\u000e\u0003\u000e\u008b\b\u000e\u0001\u000f\u0001\u000f\u0001\u000f"+
-		"\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f"+
-		"\u0001\u000f\u0003\u000f\u0097\b\u000f\u0001\u000f\u0001\u000f\u0001\u000f"+
-		"\u0001\u000f\u0001\u000f\u0001\u000f\u0003\u000f\u009f\b\u000f\u0001\u0010"+
-		"\u0001\u0010\u0001\u0010\u0001\u0010\u0001\u0010\u0001\u0010\u0001\u0010"+
-		"\u0001\u0011\u0001\u0011\u0001\u0011\u0001\u0011\u0001\u0011\u0001\u0011"+
-		"\u0001\u0011\u0001\u0012\u0001\u0012\u0001\u0012\u0005\u0012\u00b2\b\u0012"+
-		"\n\u0012\f\u0012\u00b5\t\u0012\u0001\u0013\u0003\u0013\u00b8\b\u0013\u0001"+
-		"\u0013\u0001\u0013\u0003\u0013\u00bc\b\u0013\u0001\u0013\u0003\u0013\u00bf"+
-		"\b\u0013\u0001\u0013\u0000\u0000\u0014\u0000\u0002\u0004\u0006\b\n\f\u000e"+
-		"\u0010\u0012\u0014\u0016\u0018\u001a\u001c\u001e \"$&\u0000\u0002\u0002"+
-		"\u0000\n\n\r\r\u0001\u0000\u0005\u0007\u00c0\u0000(\u0001\u0000\u0000"+
-		"\u0000\u00026\u0001\u0000\u0000\u0000\u0004>\u0001\u0000\u0000\u0000\u0006"+
-		"A\u0001\u0000\u0000\u0000\bJ\u0001\u0000\u0000\u0000\nQ\u0001\u0000\u0000"+
-		"\u0000\fS\u0001\u0000\u0000\u0000\u000ec\u0001\u0000\u0000\u0000\u0010"+
-		"f\u0001\u0000\u0000\u0000\u0012j\u0001\u0000\u0000\u0000\u0014{\u0001"+
-		"\u0000\u0000\u0000\u0016\u007f\u0001\u0000\u0000\u0000\u0018\u0084\u0001"+
-		"\u0000\u0000\u0000\u001a\u0086\u0001\u0000\u0000\u0000\u001c\u008a\u0001"+
-		"\u0000\u0000\u0000\u001e\u009e\u0001\u0000\u0000\u0000 \u00a0\u0001\u0000"+
-		"\u0000\u0000\"\u00a7\u0001\u0000\u0000\u0000$\u00b3\u0001\u0000\u0000"+
-		"\u0000&\u00be\u0001\u0000\u0000\u0000()\u0005\u0001\u0000\u0000)*\u0003"+
-		"\u0002\u0001\u0000*+\u0005\u0002\u0000\u0000+,\u0003\u0004\u0002\u0000"+
-		",-\u0005\u0000\u0000\u0001-\u0001\u0001\u0000\u0000\u0000.1\u0003\u0006"+
-		"\u0003\u0000/1\u0003\u0012\t\u00000.\u0001\u0000\u0000\u00000/\u0001\u0000"+
-		"\u0000\u000012\u0001\u0000\u0000\u000023\u0003\u0002\u0001\u000035\u0001"+
-		"\u0000\u0000\u000040\u0001\u0000\u0000\u000058\u0001\u0000\u0000\u0000"+
-		"64\u0001\u0000\u0000\u000067\u0001\u0000\u0000\u00007\u0003\u0001\u0000"+
-		"\u0000\u000086\u0001\u0000\u0000\u00009:\u0003\n\u0005\u0000:;\u0003\u0004"+
-		"\u0002\u0000;=\u0001\u0000\u0000\u0000<9\u0001\u0000\u0000\u0000=@\u0001"+
-		"\u0000\u0000\u0000><\u0001\u0000\u0000\u0000>?\u0001\u0000\u0000\u0000"+
-		"?\u0005\u0001\u0000\u0000\u0000@>\u0001\u0000\u0000\u0000AB\u0005\b\u0000"+
-		"\u0000BC\u0005\u0017\u0000\u0000CD\u0003\b\u0004\u0000DE\u0005\u0014\u0000"+
-		"\u0000E\u0007\u0001\u0000\u0000\u0000FG\u0005\u0004\u0000\u0000GI\u0003"+
-		"\u0018\f\u0000HF\u0001\u0000\u0000\u0000IL\u0001\u0000\u0000\u0000JH\u0001"+
-		"\u0000\u0000\u0000JK\u0001\u0000\u0000\u0000K\t\u0001\u0000\u0000\u0000"+
-		"LJ\u0001\u0000\u0000\u0000MR\u0003\f\u0006\u0000NR\u0003\u001e\u000f\u0000"+
-		"OR\u0003 \u0010\u0000PR\u0003\"\u0011\u0000QM\u0001\u0000\u0000\u0000"+
-		"QN\u0001\u0000\u0000\u0000QO\u0001\u0000\u0000\u0000QP\u0001\u0000\u0000"+
-		"\u0000R\u000b\u0001\u0000\u0000\u0000ST\u0005\u0017\u0000\u0000TY\u0005"+
-		"\u0004\u0000\u0000UX\u0003\u0010\b\u0000VX\u0003\u0018\f\u0000WU\u0001"+
-		"\u0000\u0000\u0000WV\u0001\u0000\u0000\u0000X[\u0001\u0000\u0000\u0000"+
-		"YW\u0001\u0000\u0000\u0000YZ\u0001\u0000\u0000\u0000Z\\\u0001\u0000\u0000"+
-		"\u0000[Y\u0001\u0000\u0000\u0000\\]\u0005\u0014\u0000\u0000]\r\u0001\u0000"+
-		"\u0000\u0000^_\u0003\u0010\b\u0000_`\u0003\u000e\u0007\u0000`b\u0001\u0000"+
-		"\u0000\u0000a^\u0001\u0000\u0000\u0000be\u0001\u0000\u0000\u0000ca\u0001"+
-		"\u0000\u0000\u0000cd\u0001\u0000\u0000\u0000d\u000f\u0001\u0000\u0000"+
-		"\u0000ec\u0001\u0000\u0000\u0000fh\u0003\u001c\u000e\u0000gi\u0003\u001a"+
-		"\r\u0000hg\u0001\u0000\u0000\u0000hi\u0001\u0000\u0000\u0000i\u0011\u0001"+
-		"\u0000\u0000\u0000jk\u0005\t\u0000\u0000kl\u0005\u0017\u0000\u0000lm\u0005"+
-		"\u000b\u0000\u0000mn\u0003\u0014\n\u0000no\u0005\f\u0000\u0000op\u0005"+
-		"\u0015\u0000\u0000pq\u0003\u0004\u0002\u0000qr\u0005\u0003\u0000\u0000"+
-		"rs\u0003$\u0012\u0000st\u0005\u0014\u0000\u0000tu\u0005\u0015\u0000\u0000"+
-		"u\u0013\u0001\u0000\u0000\u0000vw\u0003\u0016\u000b\u0000wx\u0003\u0014"+
-		"\n\u0000xz\u0001\u0000\u0000\u0000yv\u0001\u0000\u0000\u0000z}\u0001\u0000"+
-		"\u0000\u0000{y\u0001\u0000\u0000\u0000{|\u0001\u0000\u0000\u0000|\u0015"+
-		"\u0001\u0000\u0000\u0000}{\u0001\u0000\u0000\u0000~\u0080\u0005\u0016"+
-		"\u0000\u0000\u007f~\u0001\u0000\u0000\u0000\u007f\u0080\u0001\u0000\u0000"+
-		"\u0000\u0080\u0081\u0001\u0000\u0000\u0000\u0081\u0082\u0005\b\u0000\u0000"+
-		"\u0082\u0083\u0005\u0017\u0000\u0000\u0083\u0017\u0001\u0000\u0000\u0000"+
-		"\u0084\u0085\u0007\u0000\u0000\u0000\u0085\u0019\u0001\u0000\u0000\u0000"+
-		"\u0086\u0087\u0007\u0001\u0000\u0000\u0087\u001b\u0001\u0000\u0000\u0000"+
-		"\u0088\u008b\u0005\u0017\u0000\u0000\u0089\u008b\u0003\u0018\f\u0000\u008a"+
-		"\u0088\u0001\u0000\u0000\u0000\u008a\u0089\u0001\u0000\u0000\u0000\u008b"+
-		"\u001d\u0001\u0000\u0000\u0000\u008c\u008d\u0005\u000e\u0000\u0000\u008d"+
-		"\u008e\u0005\u000b\u0000\u0000\u008e\u008f\u0005\u0017\u0000\u0000\u008f"+
-		"\u0090\u0005\f\u0000\u0000\u0090\u0097\u0005\u0014\u0000\u0000\u0091\u0092"+
-		"\u0005\u000f\u0000\u0000\u0092\u0093\u0005\u000b\u0000\u0000\u0093\u0094"+
-		"\u0005\u0017\u0000\u0000\u0094\u0095\u0005\f\u0000\u0000\u0095\u0097\u0005"+
-		"\u0014\u0000\u0000\u0096\u008c\u0001\u0000\u0000\u0000\u0096\u0091\u0001"+
-		"\u0000\u0000\u0000\u0097\u009f\u0001\u0000\u0000\u0000\u0098\u0099\u0005"+
-		"\u000f\u0000\u0000\u0099\u009a\u0005\u000b\u0000\u0000\u009a\u009b\u0003"+
-		"\u0018\f\u0000\u009b\u009c\u0005\f\u0000\u0000\u009c\u009d\u0005\u0014"+
-		"\u0000\u0000\u009d\u009f\u0001\u0000\u0000\u0000\u009e\u0096\u0001\u0000"+
-		"\u0000\u0000\u009e\u0098\u0001\u0000\u0000\u0000\u009f\u001f\u0001\u0000"+
-		"\u0000\u0000\u00a0\u00a1\u0005\u0013\u0000\u0000\u00a1\u00a2\u0005\u0012"+
-		"\u0000\u0000\u00a2\u00a3\u0003$\u0012\u0000\u00a3\u00a4\u0005\u0015\u0000"+
-		"\u0000\u00a4\u00a5\u0003\u0004\u0002\u0000\u00a5\u00a6\u0005\u0015\u0000"+
-		"\u0000\u00a6!\u0001\u0000\u0000\u0000\u00a7\u00a8\u0005\u0011\u0000\u0000"+
-		"\u00a8\u00a9\u0005\u0010\u0000\u0000\u00a9\u00aa\u0003$\u0012\u0000\u00aa"+
-		"\u00ab\u0005\u0015\u0000\u0000\u00ab\u00ac\u0003\u0004\u0002\u0000\u00ac"+
-		"\u00ad\u0005\u0015\u0000\u0000\u00ad#\u0001\u0000\u0000\u0000\u00ae\u00af"+
-		"\u0003&\u0013\u0000\u00af\u00b0\u0003$\u0012\u0000\u00b0\u00b2\u0001\u0000"+
-		"\u0000\u0000\u00b1\u00ae\u0001\u0000\u0000\u0000\u00b2\u00b5\u0001\u0000"+
-		"\u0000\u0000\u00b3\u00b1\u0001\u0000\u0000\u0000\u00b3\u00b4\u0001\u0000"+
-		"\u0000\u0000\u00b4%\u0001\u0000\u0000\u0000\u00b5\u00b3\u0001\u0000\u0000"+
-		"\u0000\u00b6\u00b8\u0003\u001a\r\u0000\u00b7\u00b6\u0001\u0000\u0000\u0000"+
-		"\u00b7\u00b8\u0001\u0000\u0000\u0000\u00b8\u00b9\u0001\u0000\u0000\u0000"+
-		"\u00b9\u00bf\u0005\u0017\u0000\u0000\u00ba\u00bc\u0003\u001a\r\u0000\u00bb"+
-		"\u00ba\u0001\u0000\u0000\u0000\u00bb\u00bc\u0001\u0000\u0000\u0000\u00bc"+
-		"\u00bd\u0001\u0000\u0000\u0000\u00bd\u00bf\u0003\u0018\f\u0000\u00be\u00b7"+
-		"\u0001\u0000\u0000\u0000\u00be\u00bb\u0001\u0000\u0000\u0000\u00bf\'\u0001"+
-		"\u0000\u0000\u0000\u001206>JQWYch{\u007f\u008a\u0096\u009e\u00b3\u00b7"+
-		"\u00bb\u00be";
+		"\f\u0002@\t\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0003"+
+		"\u0003F\b\u0003\u0001\u0003\u0001\u0003\u0001\u0004\u0001\u0004\u0005"+
+		"\u0004L\b\u0004\n\u0004\f\u0004O\t\u0004\u0001\u0005\u0001\u0005\u0001"+
+		"\u0005\u0001\u0005\u0003\u0005U\b\u0005\u0001\u0006\u0001\u0006\u0001"+
+		"\u0006\u0001\u0006\u0005\u0006[\b\u0006\n\u0006\f\u0006^\t\u0006\u0001"+
+		"\u0006\u0001\u0006\u0001\u0007\u0001\u0007\u0001\u0007\u0005\u0007e\b"+
+		"\u0007\n\u0007\f\u0007h\t\u0007\u0001\b\u0001\b\u0003\bl\b\b\u0001\t\u0001"+
+		"\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001\t\u0001"+
+		"\t\u0001\t\u0001\n\u0001\n\u0001\n\u0005\n}\b\n\n\n\f\n\u0080\t\n\u0001"+
+		"\u000b\u0003\u000b\u0083\b\u000b\u0001\u000b\u0001\u000b\u0001\u000b\u0001"+
+		"\f\u0001\f\u0001\r\u0001\r\u0001\u000e\u0001\u000e\u0003\u000e\u008e\b"+
+		"\u000e\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001"+
+		"\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0003\u000f\u009a"+
+		"\b\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001"+
+		"\u000f\u0003\u000f\u00a2\b\u000f\u0001\u0010\u0001\u0010\u0001\u0010\u0001"+
+		"\u0010\u0001\u0010\u0001\u0010\u0001\u0010\u0001\u0011\u0001\u0011\u0001"+
+		"\u0011\u0001\u0011\u0001\u0011\u0001\u0011\u0001\u0011\u0001\u0012\u0001"+
+		"\u0012\u0001\u0012\u0005\u0012\u00b5\b\u0012\n\u0012\f\u0012\u00b8\t\u0012"+
+		"\u0001\u0013\u0003\u0013\u00bb\b\u0013\u0001\u0013\u0001\u0013\u0003\u0013"+
+		"\u00bf\b\u0013\u0001\u0013\u0003\u0013\u00c2\b\u0013\u0001\u0013\u0000"+
+		"\u0000\u0014\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016"+
+		"\u0018\u001a\u001c\u001e \"$&\u0000\u0002\u0002\u0000\n\n\r\r\u0001\u0000"+
+		"\u0005\u0007\u00c4\u0000(\u0001\u0000\u0000\u0000\u00026\u0001\u0000\u0000"+
+		"\u0000\u0004>\u0001\u0000\u0000\u0000\u0006A\u0001\u0000\u0000\u0000\b"+
+		"M\u0001\u0000\u0000\u0000\nT\u0001\u0000\u0000\u0000\fV\u0001\u0000\u0000"+
+		"\u0000\u000ef\u0001\u0000\u0000\u0000\u0010i\u0001\u0000\u0000\u0000\u0012"+
+		"m\u0001\u0000\u0000\u0000\u0014~\u0001\u0000\u0000\u0000\u0016\u0082\u0001"+
+		"\u0000\u0000\u0000\u0018\u0087\u0001\u0000\u0000\u0000\u001a\u0089\u0001"+
+		"\u0000\u0000\u0000\u001c\u008d\u0001\u0000\u0000\u0000\u001e\u00a1\u0001"+
+		"\u0000\u0000\u0000 \u00a3\u0001\u0000\u0000\u0000\"\u00aa\u0001\u0000"+
+		"\u0000\u0000$\u00b6\u0001\u0000\u0000\u0000&\u00c1\u0001\u0000\u0000\u0000"+
+		"()\u0005\u0001\u0000\u0000)*\u0003\u0002\u0001\u0000*+\u0005\u0002\u0000"+
+		"\u0000+,\u0003\u0004\u0002\u0000,-\u0005\u0000\u0000\u0001-\u0001\u0001"+
+		"\u0000\u0000\u0000.1\u0003\u0006\u0003\u0000/1\u0003\u0012\t\u00000.\u0001"+
+		"\u0000\u0000\u00000/\u0001\u0000\u0000\u000012\u0001\u0000\u0000\u0000"+
+		"23\u0003\u0002\u0001\u000035\u0001\u0000\u0000\u000040\u0001\u0000\u0000"+
+		"\u000058\u0001\u0000\u0000\u000064\u0001\u0000\u0000\u000067\u0001\u0000"+
+		"\u0000\u00007\u0003\u0001\u0000\u0000\u000086\u0001\u0000\u0000\u0000"+
+		"9:\u0003\n\u0005\u0000:;\u0003\u0004\u0002\u0000;=\u0001\u0000\u0000\u0000"+
+		"<9\u0001\u0000\u0000\u0000=@\u0001\u0000\u0000\u0000><\u0001\u0000\u0000"+
+		"\u0000>?\u0001\u0000\u0000\u0000?\u0005\u0001\u0000\u0000\u0000@>\u0001"+
+		"\u0000\u0000\u0000AB\u0005\b\u0000\u0000BE\u0005\u0017\u0000\u0000CD\u0005"+
+		"\u0004\u0000\u0000DF\u0007\u0000\u0000\u0000EC\u0001\u0000\u0000\u0000"+
+		"EF\u0001\u0000\u0000\u0000FG\u0001\u0000\u0000\u0000GH\u0005\u0014\u0000"+
+		"\u0000H\u0007\u0001\u0000\u0000\u0000IJ\u0005\u0004\u0000\u0000JL\u0003"+
+		"\u0018\f\u0000KI\u0001\u0000\u0000\u0000LO\u0001\u0000\u0000\u0000MK\u0001"+
+		"\u0000\u0000\u0000MN\u0001\u0000\u0000\u0000N\t\u0001\u0000\u0000\u0000"+
+		"OM\u0001\u0000\u0000\u0000PU\u0003\f\u0006\u0000QU\u0003\u001e\u000f\u0000"+
+		"RU\u0003 \u0010\u0000SU\u0003\"\u0011\u0000TP\u0001\u0000\u0000\u0000"+
+		"TQ\u0001\u0000\u0000\u0000TR\u0001\u0000\u0000\u0000TS\u0001\u0000\u0000"+
+		"\u0000U\u000b\u0001\u0000\u0000\u0000VW\u0005\u0017\u0000\u0000W\\\u0005"+
+		"\u0004\u0000\u0000X[\u0003\u0010\b\u0000Y[\u0003\u0018\f\u0000ZX\u0001"+
+		"\u0000\u0000\u0000ZY\u0001\u0000\u0000\u0000[^\u0001\u0000\u0000\u0000"+
+		"\\Z\u0001\u0000\u0000\u0000\\]\u0001\u0000\u0000\u0000]_\u0001\u0000\u0000"+
+		"\u0000^\\\u0001\u0000\u0000\u0000_`\u0005\u0014\u0000\u0000`\r\u0001\u0000"+
+		"\u0000\u0000ab\u0003\u0010\b\u0000bc\u0003\u000e\u0007\u0000ce\u0001\u0000"+
+		"\u0000\u0000da\u0001\u0000\u0000\u0000eh\u0001\u0000\u0000\u0000fd\u0001"+
+		"\u0000\u0000\u0000fg\u0001\u0000\u0000\u0000g\u000f\u0001\u0000\u0000"+
+		"\u0000hf\u0001\u0000\u0000\u0000ik\u0003\u001c\u000e\u0000jl\u0003\u001a"+
+		"\r\u0000kj\u0001\u0000\u0000\u0000kl\u0001\u0000\u0000\u0000l\u0011\u0001"+
+		"\u0000\u0000\u0000mn\u0005\t\u0000\u0000no\u0005\u0017\u0000\u0000op\u0005"+
+		"\u000b\u0000\u0000pq\u0003\u0014\n\u0000qr\u0005\f\u0000\u0000rs\u0005"+
+		"\u0015\u0000\u0000st\u0003\u0004\u0002\u0000tu\u0005\u0003\u0000\u0000"+
+		"uv\u0003$\u0012\u0000vw\u0005\u0014\u0000\u0000wx\u0005\u0015\u0000\u0000"+
+		"x\u0013\u0001\u0000\u0000\u0000yz\u0003\u0016\u000b\u0000z{\u0003\u0014"+
+		"\n\u0000{}\u0001\u0000\u0000\u0000|y\u0001\u0000\u0000\u0000}\u0080\u0001"+
+		"\u0000\u0000\u0000~|\u0001\u0000\u0000\u0000~\u007f\u0001\u0000\u0000"+
+		"\u0000\u007f\u0015\u0001\u0000\u0000\u0000\u0080~\u0001\u0000\u0000\u0000"+
+		"\u0081\u0083\u0005\u0016\u0000\u0000\u0082\u0081\u0001\u0000\u0000\u0000"+
+		"\u0082\u0083\u0001\u0000\u0000\u0000\u0083\u0084\u0001\u0000\u0000\u0000"+
+		"\u0084\u0085\u0005\b\u0000\u0000\u0085\u0086\u0005\u0017\u0000\u0000\u0086"+
+		"\u0017\u0001\u0000\u0000\u0000\u0087\u0088\u0007\u0000\u0000\u0000\u0088"+
+		"\u0019\u0001\u0000\u0000\u0000\u0089\u008a\u0007\u0001\u0000\u0000\u008a"+
+		"\u001b\u0001\u0000\u0000\u0000\u008b\u008e\u0005\u0017\u0000\u0000\u008c"+
+		"\u008e\u0003\u0018\f\u0000\u008d\u008b\u0001\u0000\u0000\u0000\u008d\u008c"+
+		"\u0001\u0000\u0000\u0000\u008e\u001d\u0001\u0000\u0000\u0000\u008f\u0090"+
+		"\u0005\u000e\u0000\u0000\u0090\u0091\u0005\u000b\u0000\u0000\u0091\u0092"+
+		"\u0005\u0017\u0000\u0000\u0092\u0093\u0005\f\u0000\u0000\u0093\u009a\u0005"+
+		"\u0014\u0000\u0000\u0094\u0095\u0005\u000f\u0000\u0000\u0095\u0096\u0005"+
+		"\u000b\u0000\u0000\u0096\u0097\u0005\u0017\u0000\u0000\u0097\u0098\u0005"+
+		"\f\u0000\u0000\u0098\u009a\u0005\u0014\u0000\u0000\u0099\u008f\u0001\u0000"+
+		"\u0000\u0000\u0099\u0094\u0001\u0000\u0000\u0000\u009a\u00a2\u0001\u0000"+
+		"\u0000\u0000\u009b\u009c\u0005\u000f\u0000\u0000\u009c\u009d\u0005\u000b"+
+		"\u0000\u0000\u009d\u009e\u0003\u0018\f\u0000\u009e\u009f\u0005\f\u0000"+
+		"\u0000\u009f\u00a0\u0005\u0014\u0000\u0000\u00a0\u00a2\u0001\u0000\u0000"+
+		"\u0000\u00a1\u0099\u0001\u0000\u0000\u0000\u00a1\u009b\u0001\u0000\u0000"+
+		"\u0000\u00a2\u001f\u0001\u0000\u0000\u0000\u00a3\u00a4\u0005\u0013\u0000"+
+		"\u0000\u00a4\u00a5\u0005\u0012\u0000\u0000\u00a5\u00a6\u0003$\u0012\u0000"+
+		"\u00a6\u00a7\u0005\u0015\u0000\u0000\u00a7\u00a8\u0003\u0004\u0002\u0000"+
+		"\u00a8\u00a9\u0005\u0015\u0000\u0000\u00a9!\u0001\u0000\u0000\u0000\u00aa"+
+		"\u00ab\u0005\u0011\u0000\u0000\u00ab\u00ac\u0005\u0010\u0000\u0000\u00ac"+
+		"\u00ad\u0003$\u0012\u0000\u00ad\u00ae\u0005\u0015\u0000\u0000\u00ae\u00af"+
+		"\u0003\u0004\u0002\u0000\u00af\u00b0\u0005\u0015\u0000\u0000\u00b0#\u0001"+
+		"\u0000\u0000\u0000\u00b1\u00b2\u0003&\u0013\u0000\u00b2\u00b3\u0003$\u0012"+
+		"\u0000\u00b3\u00b5\u0001\u0000\u0000\u0000\u00b4\u00b1\u0001\u0000\u0000"+
+		"\u0000\u00b5\u00b8\u0001\u0000\u0000\u0000\u00b6\u00b4\u0001\u0000\u0000"+
+		"\u0000\u00b6\u00b7\u0001\u0000\u0000\u0000\u00b7%\u0001\u0000\u0000\u0000"+
+		"\u00b8\u00b6\u0001\u0000\u0000\u0000\u00b9\u00bb\u0003\u001a\r\u0000\u00ba"+
+		"\u00b9\u0001\u0000\u0000\u0000\u00ba\u00bb\u0001\u0000\u0000\u0000\u00bb"+
+		"\u00bc\u0001\u0000\u0000\u0000\u00bc\u00c2\u0005\u0017\u0000\u0000\u00bd"+
+		"\u00bf\u0003\u001a\r\u0000\u00be\u00bd\u0001\u0000\u0000\u0000\u00be\u00bf"+
+		"\u0001\u0000\u0000\u0000\u00bf\u00c0\u0001\u0000\u0000\u0000\u00c0\u00c2"+
+		"\u0003\u0018\f\u0000\u00c1\u00ba\u0001\u0000\u0000\u0000\u00c1\u00be\u0001"+
+		"\u0000\u0000\u0000\u00c2\'\u0001\u0000\u0000\u0000\u001306>EMTZ\\fk~\u0082"+
+		"\u008d\u0099\u00a1\u00b6\u00ba\u00be\u00c1";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

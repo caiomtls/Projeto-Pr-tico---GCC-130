@@ -1,14 +1,16 @@
 DECLARACOES
-int v = -3!
+int v = "ola"!
 int x!
-palavra p = ""!
+palavra p = 1!
+palavra l = "1"!
+int m = "i"!
 
 funcao foo(int num, int num2)#
     RETORNA num + 1!
 #
 
 ALGORITMO
-LER(x)!
+LER(k)!
 
 
 @enquanto u >  1 e x <= l #

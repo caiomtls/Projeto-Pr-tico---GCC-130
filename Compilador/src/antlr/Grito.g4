@@ -14,7 +14,7 @@ declaracoes: ((declaracao | funcao) declaracoes)* #BlocoDeclaracoes;
 comandos: (comando comandos)* #NComandos;
 
 //<DECLARACAO> ::= TIPO ID <INICIALIZACAO> FL | <FUNCAO>;
-declaracao: TIPO ID inicializacao FL #NDeclaracao;
+declaracao: TIPO ID  (ATRIBUIR (NUM | CADEIA))? FL #NDeclaracao;
 
 //<INICIALIZACAO> ::= ATRIBUIR <INFORMACAO>| î;
 inicializacao: (ATRIBUIR informacao)* #NInicializacao;
