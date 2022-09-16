@@ -1,0 +1,25 @@
+DECLARACOES
+int v = -3!
+int x!
+palavra p = ""!
+
+funcao foo(int num, int num2)#
+    RETORNA num + 1!
+#
+
+ALGORITMO
+LER(x)!
+
+
+@enquanto u >  1 e x <= l #
+    ?se q % 2 == 0 #
+        IMPRIMIR(x)!
+    #?senao #
+        IMPRIMIR("v")!
+    #
+    x = x - 1!
+#
+
+//Comentario
+
+LER(y)!

@@ -1,0 +1,120 @@
+<svg width="1854.6000000000001" height="1085.7" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><line x1="244.25" y1="7.0" x2="88.5" y2="31.0" style="stroke:black; stroke-width:1px;" />
+<line x1="244.25" y1="7.0" x2="175.0" y2="31.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="5.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="27.0" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="48.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="67.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="86.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="103.0" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="119.0" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="140.0" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="161.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="177.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="194.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="213.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="232.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="258.0" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="281.0" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="297.0" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="313.0" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="327.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="175.0" y1="38.0" x2="344.5" y2="62.0" style="stroke:black; stroke-width:1px;" />
+<line x1="244.25" y1="7.0" x2="290.0" y2="31.0" style="stroke:black; stroke-width:1px;" />
+<line x1="244.25" y1="7.0" x2="400.0" y2="31.0" style="stroke:black; stroke-width:1px;" />
+<rect x="18.0" y="62.0" width="18.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="20" y="71" style="font-family:sans-serif;font-size:10px;">
+Int
+</text>
+<rect x="114.0" y="62.0" width="10.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="116" y="71" style="font-family:sans-serif;font-size:10px;">
+?
+</text>
+<rect x="324.0" y="62.0" width="7.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="326" y="71" style="font-family:sans-serif;font-size:10px;">
+!
+</text>
+<rect x="208.0" y="62.0" width="11.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="210" y="71" style="font-family:sans-serif;font-size:10px;">
+2
+</text>
+<rect x="214.25" y="0.0" width="60.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="216" y="9" style="font-family:sans-serif;font-size:10px;">
+programa
+</text>
+<rect x="156.0" y="62.0" width="11.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="158" y="71" style="font-family:sans-serif;font-size:10px;">
+a
+</text>
+<rect x="131.0" y="62.0" width="18.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="133" y="71" style="font-family:sans-serif;font-size:10px;">
+se
+</text>
+<rect x="174.0" y="62.0" width="7.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="176" y="71" style="font-family:sans-serif;font-size:10px;">
+!
+</text>
+<rect x="309.0" y="62.0" width="8.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="311" y="71" style="font-family:sans-serif;font-size:10px;">
+)
+</text>
+<rect x="0.0" y="62.0" width="11.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="2" y="71" style="font-family:sans-serif;font-size:10px;">
+£
+</text>
+<rect x="99.0" y="62.0" width="8.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="101" y="71" style="font-family:sans-serif;font-size:10px;">
+;
+</text>
+<rect x="277.0" y="62.0" width="8.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="279" y="71" style="font-family:sans-serif;font-size:10px;">
+(
+</text>
+<rect x="338.0" y="62.0" width="13.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="340" y="71" style="font-family:sans-serif;font-size:10px;">
+#
+</text>
+<rect x="61.0" y="62.0" width="13.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="63" y="71" style="font-family:sans-serif;font-size:10px;">
+=
+</text>
+<rect x="292.0" y="62.0" width="10.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="294" y="71" style="font-family:sans-serif;font-size:10px;">
+x
+</text>
+<rect x="218.5" y="31.0" width="143.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="220" y="40" style="font-family:sans-serif;font-size:10px;">
+&lt;missing·'ALGORITMO'&gt;
+</text>
+<rect x="43.0" y="62.0" width="11.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="45" y="71" style="font-family:sans-serif;font-size:10px;">
+a
+</text>
+<rect x="45.5" y="31.0" width="86.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="47" y="40" style="font-family:sans-serif;font-size:10px;">
+DECLARACOES
+</text>
+<rect x="368.5" y="31.0" width="63.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="370" y="40" style="font-family:sans-serif;font-size:10px;">
+comandos
+</text>
+<rect x="138.5" y="31.0" width="73.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="140" y="40" style="font-family:sans-serif;font-size:10px;">
+declaracoes
+</text>
+<rect x="81.0" y="62.0" width="11.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="83" y="71" style="font-family:sans-serif;font-size:10px;">
+0
+</text>
+<rect x="226.0" y="62.0" width="13.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="228" y="71" style="font-family:sans-serif;font-size:10px;">
+#
+</text>
+<rect x="188.0" y="62.0" width="13.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="190" y="71" style="font-family:sans-serif;font-size:10px;">
+=
+</text>
+<rect x="246.0" y="62.0" width="24.0" height="14.0" style="fill:orange; stroke:rgb(0,0,0);" rx="1"/>
+<text x="248" y="71" style="font-family:sans-serif;font-size:10px;">
+LER
+</text>
+</svg>

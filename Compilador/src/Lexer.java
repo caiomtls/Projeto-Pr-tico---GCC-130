@@ -1,3 +1,4 @@
+import antlr.GritoLexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.Token;
@@ -6,7 +7,7 @@ import java.io.IOException;
 
 public class Lexer {
     public static void main(String[] args) {
-        String filename = "/home/caio/IdeaProjects/Compilador/src/codigo.txt";
+        String filename = "/home/caio/IdeaProjects/Compilador/src/teste/codigo.txt";
         try {
             CharStream input = CharStreams.fromFileName(filename);
             GritoLexer lexer = new GritoLexer(input);
